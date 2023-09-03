@@ -105,6 +105,7 @@ const Cart = ({
   clearCart,
   incrementItem,
   decrementItem,
+  item
 }) => {
   const [showReceipt, setShowReceipt] = useState(false);
   const [receiptContent, setReceiptContent] = useState("");
@@ -218,7 +219,28 @@ const Cart = ({
       </table>
 
       {/* Conditionally render the Receipt component */}
-      {showReceipt && <Receipt content={receiptContent} />}
+      {/* {cartList.length > 0 ? (
+          cartList.map((item) => {
+            return (
+              <Invoice
+                item={item}
+                deleteItem={deleteItem}
+                incrementItem={incrementItem}
+                decrementItem={decrementItem}
+              />
+            );
+          })
+        ) : (
+          // Render the Invoice component if there are no products
+          <div className="no-products">THERE ARE NO PRODUCTS</div>
+        )}
+      </div> */}
+      {showReceipt && 
+      
+       <Receipt item={item} 
+       total={total} totalItem={totalItem} 
+       onChange={(e) => setDiscount(e.target.value)}
+       subTotal={subTotal} content={receiptContent}  />}
 
       <div className="buttons">
         <button className="cancel-button" onClick={clearCart}>

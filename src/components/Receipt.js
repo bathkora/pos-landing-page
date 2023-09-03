@@ -47,7 +47,7 @@ import './Receipt.css';
 import DateTimeDisplay from './DateTimeDisplay';
 import SaleCounter from './SaleCounter';
 
-const Receipt = () => {
+const Receipt = ({item, subTotal, totalItem, total, onChange}) => {
   const [isReceiptVisible, setIsReceiptVisible] = useState(true);
 
   const handleCloseReceipt = () => {
@@ -67,23 +67,23 @@ const Receipt = () => {
         <span>Sub Total</span>
       </div>
       <div className='item'>
-        <span>1</span>
-        <span>Sweater</span>
-        <span>2</span>
-        <span>4,000 INR</span>
+        <span>{}</span>
+        <span>{()=>item.name}</span>
+        <span>{()=>item.quantity}</span>
+        <span>{subTotal.toFixed(2)} INR</span>
       </div>
       <div className='total-item'>
         <span>Total Items</span>
-        <span>2 Total</span>
-        <span>4,000 INR</span>
+        <span>{totalItem}</span>
+        <span>{total.toFixed(2)} INR</span>
       </div>
       <div className='discount-rec'>
         <span>Discount</span>
-        <span>10%</span>
+        <span>{}</span>
       </div>
       <div className='vat'>
         <span>VAT</span>
-        <span>20%</span>
+        <span>{}</span>
       </div>
       <button className='close' onClick={handleCloseReceipt}>Close</button>
     </div>

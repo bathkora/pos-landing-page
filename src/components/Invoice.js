@@ -17,7 +17,7 @@ const Invoice = ({item, decrementItem, incrementItem,
           />
         </div>
         <div className="product">{item.name}</div>
-        <div className="price">${item.price}</div>
+        <div className="price">₹{item.price}</div>
 
         <div className="counter">
           <button className="in-de" onClick={()=>decrementItem(item.id)}>
@@ -29,7 +29,7 @@ const Invoice = ({item, decrementItem, incrementItem,
           </button>
         </div>
 
-        <div className="total">${(item.quantity)*(item.price)}</div>
+        <div className="total">₹{(item.quantity)*(item.price)}</div>
       </div>
     </div>
   );
