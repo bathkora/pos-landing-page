@@ -99,9 +99,17 @@ import "./Cart.css";
 import Invoice from "./Invoice";
 import Receipt from "./Receipt";
 
-const Cart = ({ cartList = [], deleteItem, clearCart, incrementItem, decrementItem }) => {
+const Cart = ({
+  cartList = [],
+  deleteItem,
+  clearCart,
+  incrementItem,
+  decrementItem,
+}) => {
   const [showReceipt, setShowReceipt] = useState(false);
   const [receiptContent, setReceiptContent] = useState("");
+  const [vatPercent, setVatPercent] = useState(0);
+  const [discount, setDiscount] = useState(0);
 
   const generateReceipt = () => {
     // Generate your receipt content here (e.g., based on items in the cart)
@@ -121,6 +129,12 @@ const Cart = ({ cartList = [], deleteItem, clearCart, incrementItem, decrementIt
     totalItem = totalItem + item.quantity;
   });
 
+  const totalVat = (subTotal * vatPercent / 100);
+  const totalDiscount = (subTotal * discount / 100);
+
+  const total = (subTotal + totalVat - totalDiscount);
+
+  console.log(total, totalDiscount, totalVat)
   return (
     <div className="productcart">
       <div className="heading-row">
@@ -133,7 +147,14 @@ const Cart = ({ cartList = [], deleteItem, clearCart, incrementItem, decrementIt
       <div>
         {cartList.length > 0 ? (
           cartList.map((item) => {
-            return <Invoice item={item} deleteItem={deleteItem} incrementItem={incrementItem} decrementItem={decrementItem} />;
+            return (
+              <Invoice
+                item={item}
+                deleteItem={deleteItem}
+                incrementItem={incrementItem}
+                decrementItem={decrementItem}
+              />
+            );
           })
         ) : (
           // Render the Invoice component if there are no products
@@ -154,31 +175,43 @@ const Cart = ({ cartList = [], deleteItem, clearCart, incrementItem, decrementIt
           </tr>
           <tr className="vat-tax">
             <td>
-              <label>VAT tax</label>
+              <label>VAT tax %</label>
             </td>
             <td>
-              <input type="text" placeholder="input from user" />
+              <input
+                type="number"
+                min={0}
+                max={100}
+                value={vatPercent}
+                onChange={(e) => setVatPercent(e.target.value)}
+              />
             </td>
             <td>
-              <div>0.000 INR</div>
+              <div>{totalVat.toFixed(2)} INR</div>
             </td>
           </tr>
           <tr className="discount">
             <td>
-              <label>Discount</label>
+              <label>Discount %</label>
             </td>
             <td>
-              <input type="text" placeholder="input from user" />
+              <input
+                type="number"
+                min={0}
+                max={100}
+                value={discount}
+                onChange={(e) => setDiscount(e.target.value)}
+              />
             </td>
             <td>
-              <div>0.000 INR</div>
+              <div>{totalDiscount.toFixed(2)} INR</div>
             </td>
           </tr>
           <tr className="total">
             <td>
               <label>Total</label>
             </td>
-            <td>O.OOO INR</td>
+            <td>{total.toFixed(2)} INR</td>
             <td></td>
           </tr>
         </tbody>
