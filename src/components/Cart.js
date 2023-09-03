@@ -115,6 +115,12 @@ const Cart = ({ cartList = [] , deleteItem, clearCart}) => {
     // Set showReceipt to true to display the Receipt component
     setShowReceipt(true);
   };
+let totalItem = 0;
+  let subTotal = 0;
+  cartList.forEach((item) => {
+    subTotal = subTotal + (item.price * item.quantity);
+    totalItem = totalItem + item.quantity;
+  })
 
 
 
@@ -145,9 +151,9 @@ const Cart = ({ cartList = [] , deleteItem, clearCart}) => {
       <tr className="sub-total">
          <td>
            <label>SubTotal</label>          </td>
-           <td>{}</td>
+           <td>{subTotal}</td>
          <td>
-           <div>0 items</div>
+           <div>{totalItem} items</div>
         </td>
        </tr>
        <tr className="vat-tax">
