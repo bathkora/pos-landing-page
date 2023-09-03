@@ -13,6 +13,10 @@ function App() {
     setCartList(remainingItem);
   };
 
+  const clearCart = () => {
+    setCartList([]);
+  }
+
   const addProduct = (product) => {
     // Check if the product already exists in the cart by matching its ID
     const hasMatched = cartList.some((item) => item.id === product.id);
@@ -37,7 +41,7 @@ function App() {
 
   return (
     <div className="App">
-      <Cart cartList={cartList} deleteItem={deleteItem} />
+      <Cart cartList={cartList} deleteItem={deleteItem} clearCart={clearCart} />
       <List productList={productList} addProduct={addProduct} />
     </div>
   );

@@ -100,9 +100,8 @@ import React, { useState } from "react";
 import "./Cart.css";
 import Invoice from "./Invoice";
 import Receipt from "./Receipt";
-import { productList } from "../data/data";
 
-const Cart = ({ cartList = [] , deleteItem}) => {
+const Cart = ({ cartList = [] , deleteItem, clearCart}) => {
   const [showReceipt, setShowReceipt] = useState(false);
   const [receiptContent, setReceiptContent] = useState('');
 
@@ -116,6 +115,8 @@ const Cart = ({ cartList = [] , deleteItem}) => {
     // Set showReceipt to true to display the Receipt component
     setShowReceipt(true);
   };
+
+
 
   return (
     <div className="productcart">
@@ -140,16 +141,52 @@ const Cart = ({ cartList = [] , deleteItem}) => {
       </div>
 
       <table className="invoiceTable">
-        <tbody>
-          {/* ...other rows */}
-        </tbody>
-      </table>
+       <tbody>
+      <tr className="sub-total">
+         <td>
+           <label>SubTotal</label>          </td>
+           <td>{}</td>
+         <td>
+           <div>0 items</div>
+        </td>
+       </tr>
+       <tr className="vat-tax">
+          <td>
+               <label>VAT tax</label>
+             </td>
+             <td>
+               <input type="text" placeholder="input from user" />
+             </td>
+             <td>
+               <div>0.000 INR</div>
+             </td>
+           </tr>
+           <tr className="discount">
+             <td>
+               <label>Discount</label>
+             </td>
+             <td>
+               <input type="text" placeholder="input from user" />
+             </td>
+            <td>
+               <div>0.000 INR</div>
+             </td>
+          </tr>
+          <tr className="total">
+             <td>
+               <label>Total</label>
+            </td>
+            <td>O.OOO INR</td>
+            <td></td>
+        </tr>
+      </tbody>
+   </table>
       
       {/* Conditionally render the Receipt component */}
       {showReceipt && <Receipt content={receiptContent} />}
 
       <div className="buttons">
-        <button className="cancel-button">CANCEL SALE</button>
+        <button className="cancel-button" onClick={clearCart}>CANCEL SALE</button>
         <button className="process-button" onClick={generateReceipt}>
           PROCESS SALE
         </button>
