@@ -1,0 +1,84 @@
+.receipt {
+    width: 450px;
+    height: 400px;
+    margin: 20px;
+    border-radius: 10px;
+    padding: 20px;
+    margin-left: 35px;
+    background-color: rgb(217, 217, 226);
+  justify-content: center;
+  height: fit-content;
+  }
+  
+  .header {
+    background-color: darkblue;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    align-items: center;
+  }
+  
+  .header-sale
+  {
+    font-size: 16px;
+   font-weight: bold;
+   margin-top: 5px;
+   margin-left: 185px;
+
+  }
+  .header-date {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-left: 130px;
+  }
+  .header-item {
+    border-bottom: 1px solid black;
+    justify-content: space-between;
+    display: flex;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  
+  .item {
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+    
+  }
+  
+  .total-item {
+    border-top: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+  }
+  
+  .discount-rec,
+  .vat {
+    
+    margin-top: 20px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 200px;
+    border-bottom: 1px solid black;
+  }
+  
+  .close {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 2px;
+    width: 100px;
+    font-weight: bold;
+    margin-left: 150px;
+    border: none;
+    margin-top: 50px;
+    cursor: pointer;
+    
+  }
+  
+
+
+ 

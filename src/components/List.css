@@ -12,6 +12,9 @@
     padding: 20px; /* Add padding to the container */
     margin: 0 0 20px 0;
     /* position: relative; */
+    justify-content: space-between;
+    
+    
   }
   
   .product-item {
@@ -27,6 +30,7 @@
     background-color: orangered;
     opacity: 0.6;
     display: flex;
+    
   }
   
   .product-image {
@@ -35,7 +39,7 @@
     object-fit: contain;
     opacity: 0.5;
     cursor: pointer;
-
+    
   }
   
   .product-name {

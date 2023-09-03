@@ -2,13 +2,19 @@ import React from "react";
 import { RxCross2 } from "react-icons/rx";
 import "./Invoice.css";
 import { useEffect } from "react";
+import { productList } from "../data/data";
 
-const Invoice = ({item, decrementQuantity, incrementQuantity}) => {
+const Invoice = ({item, decrementQuantity, incrementQuantity,
+     deleteItem }) => {
+
+
   return (
     <div>
       <div className="product-counter">
         <div className="icon">
-          <RxCross2 />
+          <RxCross2 
+            onClick={() => deleteItem(item.id)}
+          />
         </div>
         <div className="product">{item.name}</div>
         <div className="price">${item.price}</div>

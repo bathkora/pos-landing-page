@@ -3,9 +3,11 @@ import "./App.css";
 import Cart from "./components/Cart";
 import List from "./components/List";
 import { productList } from "./data/data";
+import Receipt from "./components/Receipt";
 
 function App() {
   const [cartList, setCartList] = useState([]);
+  // const [product, setProduct] = useState(product);
   // const addProduct = (product) => {
   //   const hasMatched = false;
 
@@ -13,6 +15,12 @@ function App() {
   //     setCartList([...cartList, { ...product, quantity: 1 }]);
   //   }
   // };
+  const [item, setItem] = useState(productList.item);
+ function deleteItem(deleteItem) {
+  const remainingItem = item.filter(item => item.id !==deleteItem.id);
+  setItem(remainingItem);
+ }
+
 
   const addProduct = (product) => {
     // Check if the product already exists in the cart by matching its ID
@@ -38,8 +46,9 @@ function App() {
 
   return (
     <div className="App">
-      <Cart cartList={cartList} />
+      <Cart cartList={cartList} deleteItem={deleteItem} />
       <List productList={productList} addProduct={addProduct} />
+      
     </div>
   );
 }

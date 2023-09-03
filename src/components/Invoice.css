@@ -4,7 +4,8 @@
     border-radius: 50%;
     background-color: red;
     /* justify-content: center; */
-    align-items: center;  
+    align-items: center;
+    cursor: pointer;
 }
 
 .product-counter{
