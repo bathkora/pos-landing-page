@@ -7,25 +7,16 @@ import Receipt from "./components/Receipt";
 
 function App() {
   const [cartList, setCartList] = useState([]);
-  // const [product, setProduct] = useState(product);
-  // const addProduct = (product) => {
-  //   const hasMatched = false;
 
-  //   if (!hasMatched) {
-  //     setCartList([...cartList, { ...product, quantity: 1 }]);
-  //   }
-  // };
-  const [item, setItem] = useState(productList.item);
- function deleteItem(deleteItem) {
-  const remainingItem = item.filter(item => item.id !==deleteItem.id);
-  setItem(remainingItem);
- }
-
+  const deleteItem = (productId) => {
+    const remainingItem = cartList.filter((item) => item.id !== productId);
+    setCartList(remainingItem);
+  };
 
   const addProduct = (product) => {
     // Check if the product already exists in the cart by matching its ID
     const hasMatched = cartList.some((item) => item.id === product.id);
-  
+
     if (hasMatched) {
       // If a matching product exists, create a copy of the cartList
       const updatedCartList = cartList.map((item) => {
@@ -35,7 +26,7 @@ function App() {
         }
         return item;
       });
-  
+
       // Update the cart with the modified list
       setCartList(updatedCartList);
     } else {
@@ -48,7 +39,6 @@ function App() {
     <div className="App">
       <Cart cartList={cartList} deleteItem={deleteItem} />
       <List productList={productList} addProduct={addProduct} />
-      
     </div>
   );
 }

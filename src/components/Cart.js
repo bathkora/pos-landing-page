@@ -102,7 +102,7 @@ import Invoice from "./Invoice";
 import Receipt from "./Receipt";
 import { productList } from "../data/data";
 
-const Cart = ({ cartList = [] }, deleteItem) => {
+const Cart = ({ cartList = [] , deleteItem}) => {
   const [showReceipt, setShowReceipt] = useState(false);
   const [receiptContent, setReceiptContent] = useState('');
 
