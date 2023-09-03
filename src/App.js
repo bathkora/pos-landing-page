@@ -13,6 +13,32 @@ function App() {
     setCartList(remainingItem);
   };
 
+  const incrementItem = (productId) => {
+    const updatedCartList = cartList.map((item) => {
+      if (item.id === productId) {
+        // Increment the quantity of the existing product by 1
+        return { ...item, quantity: item.quantity + 1 };
+      }
+      return item;
+    });
+
+    // Update the cart with the modified list
+    setCartList(updatedCartList);
+  }
+
+  const decrementItem = (productId) => {
+    const updatedCartList = cartList.map((item) => {
+      if (item.id === productId) {
+        // Increment the quantity of the existing product by 1
+        return { ...item, quantity: item.quantity - 1 };
+      }
+      return item;
+    }).filter((item)=>item.quantity>0);
+
+    // Update the cart with the modified list
+    setCartList(updatedCartList);
+  }
+
   const clearCart = () => {
     setCartList([]);
   }
@@ -41,7 +67,7 @@ function App() {
 
   return (
     <div className="App">
-      <Cart cartList={cartList} deleteItem={deleteItem} clearCart={clearCart} />
+      <Cart incrementItem={incrementItem} decrementItem={decrementItem} cartList={cartList} deleteItem={deleteItem} clearCart={clearCart} />
       <List productList={productList} addProduct={addProduct} />
     </div>
   );

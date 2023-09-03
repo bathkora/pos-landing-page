@@ -4,7 +4,7 @@ import "./Invoice.css";
 import { useEffect } from "react";
 import { productList } from "../data/data";
 
-const Invoice = ({item, decrementQuantity, incrementQuantity,
+const Invoice = ({item, decrementItem, incrementItem,
      deleteItem }) => {
 
 
@@ -20,11 +20,11 @@ const Invoice = ({item, decrementQuantity, incrementQuantity,
         <div className="price">${item.price}</div>
 
         <div className="counter">
-          <button className="in-de" onClick={decrementQuantity}>
+          <button className="in-de" onClick={()=>decrementItem(item.id)}>
             -
           </button>
           <span>{item.quantity}</span>
-          <button className="in-de" onClick={incrementQuantity}>
+          <button className="in-de" onClick={()=>incrementItem(item.id)}>
             +
           </button>
         </div>
