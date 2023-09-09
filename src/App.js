@@ -3,7 +3,7 @@ import "./App.css";
 import Cart from "./components/Cart";
 import List from "./components/List";
 import { productList } from "./data/data";
-import Receipt from "./components/Receipt";
+
 
 function App() {
   const [cartList, setCartList] = useState([]);
